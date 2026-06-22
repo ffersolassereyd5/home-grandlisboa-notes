@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 体育赛事主题分析</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f7fa;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.7;
+            color: #1a2332;
+            padding: 2.5rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 700px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 12px 32px rgba(0, 20, 40, 0.04);
+            padding: 3rem 2.5rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 580px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            .page {
+                padding: 2rem 1.25rem;
+                border-radius: 24px;
+            }
+        }
+
+        /* 标题层级 — 简洁清晰 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #0b1d2c;
+            margin-bottom: 0.25rem;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #546e7a;
+            border-left: 3px solid #2b6f8a;
+            padding-left: 1rem;
+            margin: 0.75rem 0 2rem 0;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #1e3a4d;
+            margin: 2.2rem 0 0.6rem 0;
+            border-bottom: 1.5px solid #e6edf2;
+            padding-bottom: 0.35rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 550;
+            margin: 1.5rem 0 0.3rem 0;
+            color: #1f3d50;
+        }
+
+        p {
+            margin: 0.7rem 0;
+            color: #2a3b4b;
+            font-size: 0.975rem;
+        }
+
+        /* 链接克制而明确 */
+        a {
+            color: #1d6b86;
+            text-decoration: none;
+            border-bottom: 1.5px solid transparent;
+            font-weight: 500;
+            transition: border 0.15s ease, color 0.15s ease;
+        }
+
+        a:focus,
+        a:hover {
+            color: #0b4b64;
+            border-bottom-color: #1d6b86;
+            outline: none;
+        }
+
+        /* 卡片体系 — 极简留白 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1.25rem 0 0.5rem;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            background: #f9fcfe;
+            border-radius: 16px;
+            padding: 1.2rem 1rem 1rem 1rem;
+            border: 1px solid #eef4f8;
+            transition: background 0.15s;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 550;
+            color: #1b3e4e;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-item span {
+            font-size: 0.85rem;
+            color: #3f5b6b;
+            line-height: 1.5;
+        }
+
+        .scenario-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.8rem 0 1.2rem;
+        }
+
+        .scenario-list li {
+            padding: 0.5rem 0 0.5rem 1.8rem;
+            position: relative;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f0f5fa;
+        }
+
+        .scenario-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2a7a98;
+            font-weight: 500;
+        }
+
+        /* FAQ 摘要风格 — 紧凑但不拥挤 */
+        .faq-mini {
+            margin: 1.8rem 0 1rem;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1a3e4f;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-a {
+            font-size: 0.9rem;
+            color: #3b5566;
+            padding-left: 0.25rem;
+            border-left: 2px solid #d7e3eb;
+            padding-left: 0.75rem;
+            margin: 0.2rem 0 0.4rem;
+        }
+
+        /* 提示行 — 克制表达 */
+        .disclaimer-note {
+            background: #f5f9fd;
+            padding: 1rem 1.25rem;
+            border-radius: 18px;
+            font-size: 0.85rem;
+            color: #385465;
+            margin: 2rem 0 0.5rem;
+            border: 1px solid #e3edf4;
+            line-height: 1.6;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e3ecf3;
+            margin: 2rem 0 0.75rem;
+        }
+
+        .footer-note {
+            font-size: 0.8rem;
+            color: #607d8b;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .feature-item {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <h1>竞彩网</h1>
+    <div class="subhead">赛事数据 · 主题分析 · 理性参考</div>
+
+    <!-- 摘要 / 产品说明 -->
+    <p>
+        基于赛事结构、联赛周期与对阵数据的梳理，<a href="https://chinaofficial-sporttery.com">竞彩网</a>围绕体育竞技本身提供信息整合与主题检索。平台不预设结果，而是将比赛数据、历史记录及规则说明做体系化整理，便于用户独立理解竞技逻辑。
+    </p>
+
+    <!-- 亮点：采用卡片网格 -->
+    <h2>内容组织特点</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <strong>赛事覆盖</strong>
+            <span>主流足球与篮球联赛，包含杯赛、分级联赛及国家队赛事，数据按赛季与轮次索引。</span>
+        </div>
+        <div class="feature-item">
+            <strong>主题归类</strong>
+            <span>按技战术、球队状态、交锋记录等维度聚类，减少碎片化浏览，提升检索效率。</span>
+        </div>
+        <div class="feature-item">
+            <strong>透明引用</strong>
+            <span>信息来源标注清晰，无隐藏算法或主观评分，用户可交叉验证。</span>
+        </div>
+    </div>
+
+    <!-- 使用建议 场景式 -->
+    <h2>典型使用场景</h2>
+    <ul class="scenario-list">
+        <li><strong>赛前准备</strong> — 查阅近期对战数据、伤病趋势及主客场表现，辅助形成个人赛前笔记。</li>
+        <li><strong>联赛追踪</strong> — 赛季进行中，按轮次查看积分变化、攻防效率及阵型演变。</li>
+        <li><strong>复盘分析</strong> — 赛后对比预期数据与实际进程，从战术角度理解关键节点。</li>
+        <li><strong>规则了解</strong> — 不同赛事赛制、加时条款、排名规则等细节集中展示。</li>
+    </ul>
+
+    <!-- 更克制有信息的提示 用h3 -->
+    <h2>可信但有限的信息边界</h2>
+    <p>
+        任何竞技数据都只是历史切片或统计模型，无法预测未来具体赛果。用户应基于自身判断使用信息，每个联赛、每场比赛都有独立的变量。平台不提供“推荐”“预测”类模块，所有内容以呈现事实和结构化数据为边界。
+    </p>
+    <p>
+        在使用各类赛事主题时，建议同时参考官方规则手册及即时新闻，避免单一维度依赖。
+    </p>
+
+    <!-- FAQ 摘要 简短 -->
+    <div class="faq-mini">
+        <h3>常见理解摘要</h3>
+
+        <div class="faq-q">Q：竞彩网的主题数据是否涵盖所有联赛？</div>
+        <div class="faq-a">覆盖主流欧洲联赛、亚洲及美洲主要赛事，部分低级别或杯赛数据存在延迟，以实际更新为准。</div>
+
+        <div class="faq-q">Q：数据更新频率是多少？</div>
+        <div class="faq-a">比赛日数据通常赛后24小时内更新，赛季型数据（积分榜、射手榜）每日同步一次，重大转会或规则变动以公告为准。</div>
+
+        <div class="faq-q">Q：是否可以直接使用平台数据做商业用途？</div>
+        <div class="faq-a">所有公开数据仅供个人非商业参考，大规模抓取或转发需取得授权，详情见平台条款。</div>
+    </div>
+
+    <!-- 提示区块 更自然 -->
+    <div class="disclaimer-note">
+        ⚡ 理性提示：竞技体育始终存在不确定性。任何数据工具都无法替代对比赛本身的观看与理解。请结合多种信息来源，形成独立观点。
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+        <a href="https://chinaofficial-sporttery.com">竞彩网</a> · 致力于赛事信息结构化展示。页面内容仅供个人学习与研究参考。
+    </div>
+
+    <!-- 极简占位，无额外内容 -->
+</div>
+</body>
+</html>
