@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息索引 · 竞彩网资料整理</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'IBM Plex Serif', 'Noto Serif SC', 'Source Han Serif', Georgia, 'Times New Roman', serif;
+            background-color: #f5f3ef;
+            line-height: 1.75;
+            color: #1e1a17;
+        }
+
+        /* ---- 深色头图 ---- */
+        .hero {
+            background: #1c1b1a;
+            background-image: radial-gradient(circle at 20% 40%, #2d2a26 0%, #131110 90%);
+            color: #ede7df;
+            padding: 4.2rem 1.8rem 3.6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a87c, transparent);
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 0.7rem;
+        }
+        .hero h1 small {
+            font-size: 1rem;
+            display: block;
+            font-weight: 300;
+            margin-top: 0.6rem;
+            color: #b7ab9b;
+            letter-spacing: 4px;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #c3b7a7;
+            max-width: 640px;
+            margin: 1rem auto 0;
+            border-top: 1px solid rgba(201,168,124,0.25);
+            padding-top: 1.5rem;
+        }
+
+        /* ---- 正文区 ---- */
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 2.8rem 1.6rem 4.4rem;
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            color: #3b352e;
+            margin-bottom: 2.2rem;
+            padding-left: 0.6rem;
+            border-left: 3px solid #b39b7a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 450;
+            margin: 2.6rem 0 0.6rem;
+            color: #2b2621;
+            letter-spacing: 1px;
+        }
+        h2::before {
+            content: '◆ ';
+            color: #b09877;
+            font-size: 1rem;
+        }
+
+        p {
+            margin: 1.2rem 0;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        /* 引用/卡片提示 */
+        .card-note {
+            background: #eae5dd;
+            border-radius: 12px;
+            padding: 1.5rem 1.8rem;
+            margin: 2.2rem 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid #a58c6c;
+        }
+        .card-note p {
+            margin: 0.4rem 0;
+        }
+        .card-note .label {
+            display: inline-block;
+            background: #b39b7a;
+            color: #f6f2ec;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            padding: 0.1rem 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #9b7f5b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: color 0.25s, text-decoration-color 0.25s;
+        }
+        a:hover {
+            color: #6b543b;
+            text-decoration-color: #6b543b;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px dashed #d6cdc0;
+            margin: 2.8rem 0;
+        }
+
+        .faq-summary {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+            margin: 1.8rem 0;
+        }
+        .faq-item {
+            background: #f0ece5;
+            padding: 0.9rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            border: 1px solid #dfd7cb;
+        }
+        .faq-item strong {
+            color: #4d3f31;
+            margin-right: 0.5rem;
+        }
+
+        .signature {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #d6cdc0;
+            font-size: 0.9rem;
+            color: #6b6053;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* ---- 响应式 ---- */
+        @media (max-width: 500px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero { padding: 3rem 1rem 2.6rem; }
+            .container { padding: 2rem 1.2rem 3.4rem; }
+            .faq-item { font-size: 0.88rem; padding: 0.7rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>竞彩资料索引<small>信息整理 · 手边参考</small></h1>
+    <p class="sub">从赛事数据到规则备忘，一份安静的导览笔记</p>
+</section>
+
+<main class="container">
+
+    <div class="intro">
+        <p>整理体育赛事与竞猜信息，常常需要一份不偏不倚的资料索引。本文围绕 <a href="https://chinamain-sporttery.com">竞彩网</a> 的公开内容，从信息检索角度梳理几个实用方向，帮助读者更高效地定位自己需要的板块。</p>
+    </div>
+
+    <h2>一、数据页面与赛程结构</h2>
+    <p>对于关注赛事日程的用户，竞彩网提供了按联赛、日期、项目分类的赛程总表。不同于简单罗列，其页面内嵌了动态筛选栏，支持按比赛时间、队伍名称或盘口类型快速缩小范围。初次使用时，建议先利用顶部导航的「全部赛事」入口，熟悉分类标签的逻辑。</p>
+    <p>一个常被忽略的细节是：多数列表页底部附有「历史对阵」折叠区，其中包含近七天的往绩与赔率变化趋势，对于需要做纵向对比的读者，这部分比单场数据更有参考价值。</p>
+
+    <div class="card-note">
+        <span class="label">索引提示</span>
+        <p>赛程页 URL 通常带有参数 league=xxx，收藏时保留参数可直达特定联赛。如需要完整的赔率浮动记录，可留意「数据分析」标签下的折线图模块。</p>
+    </div>
+
+    <h2>二、规则说明与术语对照</h2>
+    <p>竞猜规则的官方说明分散在多个子页面中，包括让球、胜平负、比分、总进球等玩法定义。为了方便查阅，可以把常用玩法对应的「帮助」页面整理为书签夹。比如让球胜平负的规则说明页面中，会同时标注让球数的更新时段和退款条件，这些信息在日常核对中非常实用。</p>
+    <p>对于新接触竞猜的读者，建议先阅读「玩法介绍」栏目下的通用问答，其中对「无效场次」「奖金计算示例」的表述比较清晰，比单独搜索零散解释更节省时间。</p>
+
+    <hr>
+
+    <h2>三、信息获取节奏建议</h2>
+    <p>赛事资讯的发布通常集中在每天上午和傍晚。通过竞彩网首页的「公告」板块，可以第一时间看到赛程调整、玩法变更或系统维护通知。如果你习惯用 RSS 类工具跟踪更新，可以将该网站的公告列表页作为固定信源——虽然不提供标准 Feed，但页面结构规整，便于自建抓取。</p>
+    <p>另外，部分深度数据（如球队交锋统计、主场胜率表）并未直接展示在首页，而是隐藏在「数据」二级菜单下的子页面里。建议定期翻阅，有时会发现新的可视化专题，例如近期的「五大联赛半场进球分布」整理就相当直观。</p>
+
+    <div class="card-note">
+        <span class="label">实用备忘</span>
+        <p>• 奖金试算工具位于「工具」→「奖金计算器」<br>
+        • 客服与争议处理入口固定在页面右下角「帮助」浮窗内<br>
+        • 个人账户的投注记录导出为 CSV 格式，方便本地归档</p>
+    </div>
+
+    <h2>四、常见的检索盲区</h2>
+    <p>根据与几位长期使用者的交流，以下三个页面容易被忽略：</p>
+    <div class="faq-summary">
+        <div class="faq-item"><strong>Q1</strong> 赛事延期后如何查询新赛程？—— 可在「赛程」页选择「已改期」筛选状态。</div>
+        <div class="faq-item"><strong>Q2</strong> 不同玩法的返奖率在哪公示？—— 每个玩法介绍页底部都有「返奖率说明」折叠块。</div>
+        <div class="faq-item"><strong>Q3</strong> 历史赔率能否追溯三个月以上？—— 目前只开放近30天数据，更早记录需通过「数据下载」专区申请。</div>
+    </div>
+    <p>这些内容都直接或间接与 <a href="https://chinamain-sporttery.com">竞彩网</a> 的栏目架构相关，建议在使用前先花十分钟浏览一遍全局导航，比遇到问题再搜索更高效。</p>
+
+    <hr>
+
+    <p style="font-size:0.95rem; color:#5a4e3f;">整理笔记的意义在于减少重复查找。如果你发现某个常用功能总是藏在二级菜单里，不妨把直达链接记下来——这份索引本身也是一样，它不会替代原站，只希望成为你手边安静的路标。</p>
+
+    <div class="signature">
+        <span>资料整理 · v1.2</span>
+        <span>更新于 2025-04-08</span>
+    </div>
+
+</main>
+
+</body>
+</html>
